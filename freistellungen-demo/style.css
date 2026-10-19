@@ -1,0 +1,48 @@
+body{font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.45;color:#000;background:#e9e9e9;margin:0}
+.top{background:#fff;border-bottom:3px solid #000;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.top a{color:#000;font-weight:bold;margin-right:18px;text-decoration:underline}
+.top form{display:inline}
+.demo{background:#ffd400;color:#000;font-weight:bold;text-align:center;padding:6px;border-bottom:2px solid #000}
+main{max-width:1000px;margin:20px auto;padding:0 12px}
+.paper{background:#fff;border:2px solid #000;padding:24px 30px;margin-bottom:24px}
+.hdr{display:flex;justify-content:space-between;border-bottom:2px solid #000;padding-bottom:6px;font-size:18px}
+h1{font-size:28px;margin:18px 0 4px}
+h2{font-size:22px;background:#000;color:#fff;padding:6px 10px;margin:26px 0 12px}
+h3{font-size:20px;margin:0 0 8px}
+table.f{width:100%;border-collapse:collapse}
+table.f th,table.f td{border:1.5px solid #000;padding:8px 10px;vertical-align:top;text-align:left}
+table.f th{width:34%;background:#f0f0f0}
+input[type=text],input[type=date],input[type=time],input[type=tel],select,textarea{font-size:20px;padding:7px;border:2px solid #000;background:#fff;color:#000;max-width:100%;box-sizing:border-box}
+textarea{width:100%;min-height:90px}
+input[type=text],input[type=tel]{width:100%}
+input[type=checkbox],input[type=radio]{width:22px;height:22px;vertical-align:middle;margin-right:6px;accent-color:#000}
+label.c{display:inline-block;margin:3px 16px 3px 0;white-space:nowrap}
+.hint{background:#fff3b0;border:2px solid #000;padding:8px 10px;font-weight:bold;margin:6px 0}
+.btn,button{font-size:20px;font-weight:bold;padding:10px 22px;border:2px solid #000;background:#000;color:#fff;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.light,button.light{background:#fff;color:#000}
+.flash{padding:10px 14px;border:2px solid #000;margin-bottom:12px;font-weight:bold}
+.flash.ok{background:#c9f0c9}.flash.err{background:#ffd2d2}
+.steps{display:flex;gap:0;margin:14px 0;padding:0;list-style:none}
+.steps li{flex:1;text-align:center;padding:10px 4px;border:2px solid #000;margin-left:-2px;background:#fff;font-weight:bold}
+.steps li.done{background:#000;color:#fff}
+.steps li.now{background:#ffd400}
+.steps li.ask{background:#9cd0ff}
+.steps li.bad{background:#ff6b6b}
+.steps li.todo{color:#555;border-style:dashed}
+table.l{width:100%;border-collapse:collapse;background:#fff}
+table.l th,table.l td{border:1.5px solid #000;padding:8px;text-align:left}
+table.l th{background:#000;color:#fff}
+.box{border:2px solid #000;padding:12px;margin:10px 0}
+.tag{display:inline-block;border:2px solid #000;padding:1px 8px;font-weight:bold;margin:2px}
+.stundenreihe label{margin-right:10px}
+iframe.mail{width:100%;height:640px;border:2px solid #000;background:#fff}
+small,.muted{color:#333;font-size:17px}
+
+.lg img{vertical-align:middle;margin-right:8px}
+
+.full{width:100%}
+img.mini{vertical-align:middle}
+.bar{height:22px;border:2px solid #000;background:#fff;margin:8px 0}.bar span{display:block;height:100%;background:#000;transition:width .6s}
+.role{display:inline-flex;gap:6px;flex-wrap:wrap}.role button{font-size:16px;padding:6px 12px}.role button.on{background:#ffd400;color:#000}
+.mailbox{background:#f7f7f7;border:1.5px dashed #000;padding:8px 12px;font-size:16px;margin:4px 0}
+@media(max-width:700px){body{font-size:17px}.paper{padding:14px}.steps li{font-size:13px}}

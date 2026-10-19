@@ -18,8 +18,16 @@
 <p>Web App, die das Papierformular für Freistellung oder Beurlaubung ersetzt. Mitarbeitende stellen den Antrag online, Vorgesetzte und Geschäftsführung geben in zwei Stufen frei, stellen Rückfragen oder lehnen ab. Jede Station verschickt automatisch eine Benachrichtigung, ein Fortschrittsbalken zeigt den Stand. Anmeldung im Echtbetrieb über Microsoft Entra ID, Rollen und Schulzuordnung pflegt die Verwaltung.</p>
 <div class="tags"><span>Python / Flask</span><span>SQLite</span><span>Entra ID (OpenID Connect)</span><span>Freigabe Workflow</span><span>Datenschutz</span></div>
 <p><a class="btn" style="background:#1f5fbf;color:#fff" href="freistellungen-demo/">Demo ausprobieren</a> <small>Demo mit Beispieldaten, läuft komplett im Browser.</small></p></div>
-<div class="card"><span class="badge">in Arbeit</span><h3>KI Helpdesk für die Schule</h3><p>Lehrkräfte melden Probleme mit Untis, Schulmanager, Teams oder den Tafeln über ein Formular. Eine KI schlägt passende Lösungen aus der Wissensdatenbank vor, dahinter steht eine Ticketübersicht mit Status und Auswertung.</p><div class="tags"><span>Ticketsystem</span><span>Wissensdatenbank</span><span>KI</span></div></div>
-<div class="card"><span class="badge">in Arbeit</span><h3>Schülerkonten und Klassenteams automatisch anlegen</h3><p>Aus der Schülerliste entstehen per Microsoft Graph die Konten in Entra ID und die Klassenteams nach Vorlage. Ein Dashboard zeigt den Fortschritt in Prozent.</p><div class="tags"><span>Microsoft Graph</span><span>Entra ID</span><span>Teams</span><span>Automatisierung</span></div></div>
+<div class="card"><span class="badge live">Demo online</span><h3>KI Helpdesk für die Schule</h3>
+<a href="helpdesk-demo/"><img src="assets/helpdesk.png" alt="KI Helpdesk Demo"></a>
+<p>Das Kollegium meldet Probleme mit Untis, Schulportal, Teams oder den Tafeln über ein Formular. Sofort erscheinen passende Lösungsschritte aus der Wissensdatenbank, auf Wunsch von einer KI formuliert. Hilft das, schließt der Melder das Ticket selbst. Sonst landet es mit Status, Priorität und Bearbeiter in der Ticketliste der IT, eine Statistik zeigt Lösungsquote und Schwerpunkte.</p>
+<div class="tags"><span>Python / Flask</span><span>SQLite</span><span>LLM Schnittstelle</span><span>Wissensdatenbank</span><span>Ticketsystem</span></div>
+<p><a class="btn" style="background:#1f5fbf;color:#fff" href="helpdesk-demo/">Demo ausprobieren</a></p></div>
+<div class="card"><span class="badge live">Demo online</span><h3>Schülerkonten und Klassenteams automatisch anlegen</h3>
+<a href="kontenautomatik-demo/"><img src="assets/kontenautomatik.png" alt="Kontenautomatik Demo"></a>
+<p>PowerShell Skript mit Microsoft Graph: Aus dem Export der Schülerliste entstehen Konten in Entra ID nach festem Namensschema, Lizenzen und Gruppen werden zugewiesen und je Klasse ein Team mit der Vorlage Kurs angelegt. Testlauf mit WhatIf, Fortschritt in Prozent, Protokoll und CSV Bericht mit Startkennwörtern.</p>
+<div class="tags"><span>PowerShell</span><span>Microsoft Graph</span><span>Entra ID</span><span>Teams</span><span>Automatisierung</span></div>
+<p><a class="btn" style="background:#1f5fbf;color:#fff" href="kontenautomatik-demo/">Testlauf ansehen</a></p></div>
 </div></div></section>
 <footer><div class="wrap"><p>Kontakt: <a href="mailto:nachhilfe.baumgartner@gmail.com">nachhilfe.baumgartner@gmail.com</a></p><p><small>Alle Demos verwenden erfundene Beispieldaten.</small></p></div></footer>
 </body></html>

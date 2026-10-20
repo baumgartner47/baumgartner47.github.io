@@ -1,20 +1,21 @@
 const USERS={ma:{n:"Lena Musterfrau",r:"Mitarbeiterin",s:"Realschule"},sv:{n:"Paul Beispiel",r:"Vorgesetzter",s:"Realschule"},gf:{n:"Dr. Eva Probe",r:"Geschäftsführung"},admin:{n:"Admin Demo",r:"Administrator"}};
-const STEPS=["Eingereicht","Vorgesetzte","Geschäftsführung","Entschieden"];
+const STEPS=["Eingereicht","Vorgesetzter","Geschäftsführung","Entschieden"];
 const seed=()=>[
  {id:1,user:"ma",grund:"Fortbildung Microsoft 365",von:"2026-11-12 08:00",bis:"2026-11-12 16:00",status:"offen",stage:"sv",log:["Antrag eingereicht"]},
  {id:2,user:"ma",grund:"Familiärer Anlass",von:"2026-10-02 07:30",bis:"2026-10-02 13:00",status:"genehmigt",stage:"done",log:["Antrag eingereicht","Vorgesetzter: genehmigt","Geschäftsführung: genehmigt"]},
  {id:3,user:"ma",grund:"Arzttermin",von:"2026-11-20 09:00",bis:"2026-11-20 11:00",status:"rueckfrage",stage:"sv",log:["Antrag eingereicht","Vorgesetzter: Rückfrage (Bitte Vertretung angeben)"]}];
 let S=JSON.parse(localStorage.getItem("fsdemo")||"null")||{role:"ma",reqs:seed(),mails:[]};
+const fmt=d=>{const m=String(d).match(/(\d{4})-(\d{2})-(\d{2})[ T](\d{2}:\d{2})/);return m?`${m[3]}.${m[2]}.${m[1]}, ${m[4]} Uhr`:d};
 const save=()=>localStorage.setItem("fsdemo",JSON.stringify(S));
 const $=h=>{document.getElementById("app").innerHTML=h};
-function mail(to,t){S.mails.unshift({to,t,at:new Date().toLocaleTimeString("de-DE")});}
+function mail(to,t){S.mails.unshift({to,t,at:new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})+" Uhr"});}
 function stepIdx(r){return r.status==="genehmigt"||r.status==="abgelehnt"?3:r.stage==="gf"?2:1}
 function steps(r){const i=stepIdx(r);return `<ul class="steps">${STEPS.map((s,k)=>{let c=k<i?"done":k===i?(r.status==="rueckfrage"?"ask":r.status==="abgelehnt"?"bad":r.status==="genehmigt"?"done":"now"):"todo";return `<li class="${c}">${s}</li>`}).join("")}</ul>
 <div class="bar"><span style="width:${Math.round(i/3*100)}%"></span></div><div class="hint" style="font-weight:normal">Fortschritt: ${Math.round(i/3*100)} %</div>`}
 const label={offen:"offen",genehmigt:"genehmigt",abgelehnt:"abgelehnt",rueckfrage:"Rückfrage"};
 function roles(){document.getElementById("roles").innerHTML="Ansicht als: "+Object.entries(USERS).map(([k,u])=>`<button class="light ${S.role===k?"on":""}" onclick="S.role='${k}';save();render()">${u.r}</button>`).join("")+` <button class="light" onclick="localStorage.removeItem('fsdemo');location.reload()">Zurücksetzen</button>`}
 function card(r,actions=""){return `<div class="paper"><div class="hdr"><span>Antrag Nr. ${r.id}</span><span>${USERS[r.user].n}</span></div>
-<h3 style="margin-top:12px">${r.grund}</h3><table class="f"><tr><th>Zeitraum von</th><td>${r.von}</td></tr><tr><th>Zeitraum bis</th><td>${r.bis}</td></tr><tr><th>Status</th><td><b>${label[r.status]}</b></td></tr></table>${steps(r)}
+<h3 style="margin-top:12px">${r.grund}</h3><table class="f"><tr><th>Zeitraum von</th><td>${fmt(r.von)}</td></tr><tr><th>Zeitraum bis</th><td>${fmt(r.bis)}</td></tr><tr><th>Status</th><td><b>${label[r.status]}</b></td></tr></table>${steps(r)}
 <details><summary>Verlauf</summary><ul>${r.log.map(l=>`<li>${l}</li>`).join("")}</ul></details>${actions}</div>`}
 function render(){roles();const u=USERS[S.role];let h=`<h1>Hallo ${u.n}</h1><p>${u.r}${u.s?", "+u.s:""}</p>`;
  if(S.role==="ma"){h+=`<h2>Neuer Antrag auf Freistellung oder Beurlaubung</h2><div class="paper"><table class="f">

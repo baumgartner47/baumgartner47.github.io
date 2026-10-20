@@ -1,17 +1,17 @@
 <!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kontenautomatik (Demo mit Beispieldaten)</title><link rel="stylesheet" href="style.css"></head><body>
+<title>Kontenautomatik (Demo mit Beispieldaten)</title><meta name="description" content="Demo mit Beispieldaten aus dem Portfolio von Andreas Baumgartner."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%231f5fbf%27/%3E%3Ctext x=%2732%27 y=%2742%27 font-size=%2728%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27Arial%27 font-weight=%27bold%27%3EAB%3C/text%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"></head><body>
 <div class="demo">Demo mit Beispieldaten. Simulierter Testlauf (WhatIf), es wird keine Verbindung zu Microsoft hergestellt.</div>
 <nav><b>Kontenautomatik</b><a href="../">Zurück zum Portfolio</a></nav>
 <main>
 <div class="box"><h1>Schülerkonten und Klassenteams automatisch anlegen</h1>
-<p>Das PowerShell Skript liest den Export der Schülerliste, legt Konten in Entra ID an, weist Lizenz und Gruppe zu und erstellt je Klasse ein Team mit der Vorlage <b>Kurs</b>. Hier läuft ein Testlauf mit erfundenen Daten im Browser.</p>
+<p>Das PowerShell-Skript liest den Export der Schülerliste, legt Konten in Entra ID an, weist Lizenz und Gruppe zu und erstellt je Klasse ein Team mit der Vorlage <b>Kurs</b>. Hier läuft ein Testlauf mit erfundenen Daten im Browser.</p>
 <label>Schülerliste (CSV)</label><textarea id="csv" style="min-height:160px;font-family:monospace"></textarea>
 <label>Domain</label><input id="dom" value="schule.example">
 <button class="btn" id="go">Testlauf starten (WhatIf)</button>
 <div id="prog" style="display:none"><p id="pt"></p><div class="bar"><span id="pb" style="width:0"></span></div></div></div>
 <div id="out"></div>
 <div class="box"><h2>Auszug aus dem Skript</h2>
-<p>Benutzername aus Vor und Nachname, Umlaute umgeschrieben, Doppelte bekommen eine Ziffer:</p>
+<p>Benutzername aus Vor- und Nachname, Umlaute umgeschrieben, doppelte Namen bekommen eine Ziffer:</p>
 <pre>function Get-Benutzername([string]$vor, [string]$nach) {
     $s = "$vor.$nach".ToLower()
     foreach ($p in @{ 'ä'='ae'; 'ö'='oe'; 'ü'='ue'; 'ß'='ss' }.GetEnumerator()) { $s = $s.Replace($p.Key, $p.Value) }
@@ -32,5 +32,5 @@
                    'user@odata.bind' = "https://graph.microsoft.com/v1.0/users('$lehrkraft')" })
 }
 New-MgTeam -BodyParameter $body</pre>
-<p>Fortschritt: <code>Write-Progress -PercentComplete</code>, Ergebnis als CSV Bericht und Protokoll.</p></div>
+<p>Fortschritt: <code>Write-Progress -PercentComplete</code>, Ergebnis als CSV-Bericht und Protokoll.</p></div>
 </main><script src="app.js"></script></body></html>

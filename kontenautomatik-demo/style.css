@@ -12,3 +12,4 @@ table{width:100%;border-collapse:collapse;background:#fff}td,th{padding:8px;bord
 .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.kpi div{background:#fff;border-radius:10px;padding:14px;box-shadow:0 1px 8px #0001}.kpi b{font-size:1.8rem;display:block}
 pre{background:#0f1b2b;color:#d6e2ff;padding:14px;border-radius:8px;overflow:auto;font-size:.85rem}
 .ok{color:#1d6b2a;font-weight:600}.neu{color:#1f5fbf;font-weight:600}code{background:#e8eefb;padding:1px 5px;border-radius:4px}
+@media(max-width:700px){table{display:block;overflow-x:auto;max-width:100%}}

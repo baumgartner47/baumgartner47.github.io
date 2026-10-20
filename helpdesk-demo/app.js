@@ -37,7 +37,7 @@ function upd(id,k,v){T.find(t=>t.id==id)[k]=v;save()}
 function statistik(){const n=T.length,g=T.filter(t=>t.status=="gelöst").length,s=T.filter(t=>t.bearbeiter=="Selbsthilfe").length,q=n?Math.round(g/n*100):0;
 const kat={};T.forEach(t=>kat[t.kategorie]=(kat[t.kategorie]||0)+1);const m=Math.max(...Object.values(kat));
 app.innerHTML=`<h1>Statistik</h1><div class="kpi"><div><b>${n}</b>Tickets</div><div><b>${g}</b>gelöst</div><div><b>${s}</b>per Selbsthilfe</div><div><b>${q} %</b>Lösungsquote</div></div>
-<div class="box" style="margin-top:16px"><h3>Lösungsquote</h3><div class="bar"><span style="width:${q}%"></span></div><h3>Tickets nach Bereich</h3>${
+<div class="box" style="margin-top:16px"><h3>Anteil gelöster Tickets</h3><div class="bar"><span style="width:${q}%"></span></div><h3>Tickets nach Bereich</h3>${
 Object.entries(kat).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div>${k}: ${v}<div class="bar"><span style="width:${v/m*100}%"></span></div></div>`).join("")}</div>`}
 function ansicht(v){if(v=="reset"){localStorage.removeItem("hddemo");T=JSON.parse(JSON.stringify(SEED));v="melden"}
 document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v==v));({melden,liste,statistik})[v]()}
